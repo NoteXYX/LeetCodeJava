@@ -1,5 +1,5 @@
 //无重复字符的最长子串
-package com.company;
+package com.leetcode;
 import java.util.HashSet;
 
 public class Main3 {

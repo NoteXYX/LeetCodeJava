@@ -1,4 +1,4 @@
-package com.company;
+package com.leetcode;
 public class quickMi {
     public int myPow(int a, int b) {
         int base = a;

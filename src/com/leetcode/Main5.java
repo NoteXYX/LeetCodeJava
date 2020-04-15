@@ -1,5 +1,5 @@
 //最长回文子串
-package com.company;
+package com.leetcode;
 public class Main5 {
     public String longestPalindrome(String s) {
         int length = s.length();
