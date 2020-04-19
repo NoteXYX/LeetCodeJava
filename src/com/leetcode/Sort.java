@@ -11,13 +11,11 @@ public class Sort {
     /***************************************冒泡排序******************************************
      * 平均时间复杂度O(n^2)    空间复杂度O(1)    稳定    最差时间复杂度O(n^2)    最好时间复杂度O(n)   */
     public void maopaoSort(int[] nums) {
-        int length = nums.length;
-        while (length > 0) {
-            for (int i = 0; i < length-1; i++) {
+        for (int end = nums.length; end > 0; end--) {
+            for (int i = 0; i < end-1; i++) {
                 if (nums[i] > nums[i+1])
                     swap(nums, i, i+1);
             }
-            length--;
         }
     }
     /***************************************冒泡排序******************************************/
