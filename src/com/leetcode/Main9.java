@@ -8,11 +8,11 @@ public class Main9 {
     public boolean isPalindrome(int x) {
         if (x < 0)
             return false;
-        int weishu = 1;
-        int tmp = weishu * 10;
+        int weishu = 0;
+        int tmp = x;
         boolean res = true;
-        while (tmp <= x) {
-            tmp *= 10;
+        while (tmp!=0) {
+            tmp /= 10;
             weishu++;
         }
         int curWei = 1;
@@ -35,6 +35,6 @@ public class Main9 {
 
     public static void main(String[] args) {
         Main9 m = new Main9();
-        System.out.println(m.isPalindrome(11));
+        System.out.println(m.isPalindrome(1410110141));
     }
 }
