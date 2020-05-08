@@ -1,6 +1,7 @@
 package com.leetcode;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Sort {
     public void swap(int[] nums, int posA, int posB) {
@@ -67,6 +68,7 @@ public class Sort {
         swap(nums, index, right);
         return index;
     }
+    //递归
     public void quickSort(int[] nums, int left, int right) {
         if (left < right) {
             int mid = partition(nums, left, right);
@@ -74,6 +76,29 @@ public class Sort {
             quickSort(nums, mid+1, right);
         }
     }
+    //非递归，用栈实现
+    public void quickSort2(int[] nums, int left, int right) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(left);
+        stack.push(right);
+        int l = 0;
+        int r = 0;
+        int mid = 0;
+        while (!stack.empty()) {
+            r = stack.pop();
+            l = stack.pop();
+            mid = partition(nums, l, r);
+            if (l < mid - 1) {
+                stack.push(l);
+                stack.push(mid-1);
+            }
+            if (r > mid + 1) {
+                stack.push(mid+1);
+                stack.push(r);
+            }
+        }
+    }
+
     /***************************************快速排序******************************************/
 
     /***************************************归并排序******************************************
@@ -135,7 +160,10 @@ public class Sort {
         System.out.println("冒泡排序：" + Arrays.toString(nums));
         nums = new int[]{5, 2, 6, 1, 7, 3, 2};
         s.quickSort(nums, 0, nums.length-1);
-        System.out.println("快速排序：" + Arrays.toString(nums));
+        System.out.println("快速排序递归：" + Arrays.toString(nums));
+        nums = new int[]{5, 2, 6, 1, 7, 3, 2};
+        s.quickSort2(nums, 0, nums.length-1);
+        System.out.println("快速排序非递归：" + Arrays.toString(nums));
         nums = new int[]{5, 2, 6, 1, 7, 3, 2};
         s.guibingSort(nums);
         System.out.println("归并排序：" + Arrays.toString(nums));
