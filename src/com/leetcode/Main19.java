@@ -37,12 +37,7 @@ public class Main19 {
         delPrv.next = delPrv.next.next;
         return head;
     }
-    public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        Main19 m = new Main19();
-        head = m.removeNthFromEnd(head, 3);
+    public static void printListNode(ListNode head) {
         while (head != null) {
             if (head.next == null) {
                 System.out.printf("%d%n", head.val);
@@ -52,5 +47,13 @@ public class Main19 {
             }
             head = head.next;
         }
+    }
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        Main19 m = new Main19();
+        head = m.removeNthFromEnd(head, 3);
+        printListNode(head);
     }
 }
