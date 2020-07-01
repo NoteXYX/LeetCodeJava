@@ -1,8 +1,7 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * 215. 数组中的第K个最大元素
@@ -14,6 +13,26 @@ import java.util.List;
  * 输出: 4
  */
 public class Main215 {
+    public int findKthLargest0(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        for (int num : nums) {
+            if (pq.size() < k) {
+                pq.offer(num);
+            }
+            else {
+                if (num > pq.peek()) {
+                    pq.poll();
+                    pq.offer(num);
+                }
+            }
+        }
+        return pq.peek();
+    }
     public int findKthLargest(int[] nums, int k) {
         if (nums == null || nums.length < k) {
             return 0;
@@ -60,6 +79,6 @@ public class Main215 {
         int[] nums = {3,2,1,5,6,4};
         int k = 2;
         Main215 m = new Main215();
-        System.out.println(m.findKthLargest(nums, k));
+        System.out.println(m.findKthLargest0(nums, k));
     }
 }
