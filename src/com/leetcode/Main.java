@@ -1,5 +1,10 @@
 package com.leetcode;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class Main {
     public static double findMaxProduct(double[] a)
     {
@@ -15,11 +20,27 @@ public class Main {
         }
         return maxProduct;
     }
+    public int[] divingBoard(int shorter, int longer, int k) {
+        int[] res = new int[0];
+        if (k <= 0)
+            return res;
+        Set<Integer> resSet = new LinkedHashSet<>();
+        for (int i = 0; i <= k; i++) {
+            resSet.add(shorter * i + longer * (k-i));
+        }
+        return resSet.stream().mapToInt(Integer::intValue).toArray();
+    }
 
     public static void main(String[] args) {
         double[] a = {-2.5, 4, 0, 3, 0.5, 8, -1};
         double maxProduct=findMaxProduct(a);
         System.out.println(maxProduct);
+        Main m = new Main();
+        int shorter = 1;
+        int longer = 2;
+        int k = 3;
+        System.out.println(Arrays.toString(m.divingBoard(shorter, longer, k)));
+
     }
 
 }
