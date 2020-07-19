@@ -1,8 +1,8 @@
 package com.leetcode;
 
 public class ListNode {
-    private int val;
-    private ListNode next = null;
+    public int val;
+    public ListNode next = null;
     ListNode(int val) {
         this.val = val;
     }
