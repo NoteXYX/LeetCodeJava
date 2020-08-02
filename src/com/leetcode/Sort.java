@@ -153,6 +153,50 @@ public class Sort {
     }
     /***************************************希尔排序******************************************/
 
+    /********************************堆排序*******************************************/
+    public int findKthLargest(int[] nums, int k) {
+        if (nums == null || nums.length < k) {
+            return 0;
+        }
+        int heapSize = nums.length;
+        buildHeap(nums, heapSize);
+        for (int i = nums.length-1; i > nums.length-k; i--) {
+            swap(nums, 0, i);
+            heapSize--;
+            heapify(nums, 0, heapSize);
+        }
+        return nums[0];
+    }
+
+    public void buildHeap(int[] nums, int heapSize) {
+        for (int i = (heapSize - 2) / 2; i >= 0; i--) {
+            heapify(nums, i, heapSize);
+        }
+    }
+
+    public void heapify(int[] nums, int curNode, int heapSize) {
+        int l = curNode * 2 + 1;
+        int r = curNode * 2 + 2;
+        int largest = curNode;
+        if (l < heapSize && nums[l] > nums[largest]) {
+            largest = l;
+        }
+        if (r < heapSize && nums[r] > nums[largest]) {
+            largest = r;
+        }
+        if (largest != curNode) {
+            swap(nums, curNode, largest);
+            heapify(nums, largest, heapSize);
+        }
+    }
+
+//    public void swap(int[] nums, int x, int y) {
+//        int tmp = nums[x];
+//        nums[x] = nums[y];
+//        nums[y] = tmp;
+//    }
+    /********************************堆排序*******************************************/
+
     public static void main(String[] args) {
         Sort s = new Sort();
         int[] nums = {5,2,6,1,7,3,2};

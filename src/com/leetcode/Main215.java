@@ -79,6 +79,6 @@ public class Main215 {
         int[] nums = {3,2,1,5,6,4};
         int k = 2;
         Main215 m = new Main215();
-        System.out.println(m.findKthLargest0(nums, k));
+        System.out.println(m.findKthLargest(nums, k));
     }
 }
