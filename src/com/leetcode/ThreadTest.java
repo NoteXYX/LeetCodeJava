@@ -64,6 +64,8 @@ public class ThreadTest {
         @Override
         public void run() {
             while (number.num <= 100) {
+//                if (Thread.currentThread().isInterrupted())
+//                    return;
                 synchronized(number) {
                     try {
                         Thread.sleep(300);
@@ -94,6 +96,8 @@ public class ThreadTest {
         @Override
         public void run() {
             while (number.num <= 100) {
+//                if (Thread.currentThread().isInterrupted())
+//                    return;
                 synchronized(number) {
                     if (number.num % 2 != 0) {
                         try {
@@ -133,5 +137,13 @@ public class ThreadTest {
         Thread oddThread = new Thread(oddPrinter);
         evenThread.start();
         oddThread.start();
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        evenThread.interrupt();
+//        oddThread.interrupt();
+
     }
 }
