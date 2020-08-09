@@ -68,12 +68,12 @@ public class ThreadTest {
 //                    return;
                 synchronized(number) {
                     try {
-                        Thread.sleep(300);
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     if (number.num % 2 == 0) {
-                        System.out.println(number.num);
+                        System.out.println(Thread.currentThread().getName() + "打印：" + number.num);
                         number.num += 1;
                         number.notify();
                     }
@@ -101,11 +101,11 @@ public class ThreadTest {
                 synchronized(number) {
                     if (number.num % 2 != 0) {
                         try {
-                            Thread.sleep(300);
+                            Thread.sleep(100);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        System.out.println(number.num);
+                        System.out.println(Thread.currentThread().getName() + "打印：" + number.num);
                         number.num += 1;
                         number.notify();
                     }
@@ -130,13 +130,15 @@ public class ThreadTest {
 //        for (int i = 0; i < 2; i++) {
 //            new Thread(consumer, "线程"+i).start();
 //        }
+
         Number number = new Number(0);
         EvenPrinter evenPrinter = new EvenPrinter(number);
         OddPrinter oddPrinter = new OddPrinter(number);
-        Thread evenThread = new Thread(evenPrinter);
-        Thread oddThread = new Thread(oddPrinter);
+        Thread evenThread = new Thread(evenPrinter, "偶数打印线程");
+        Thread oddThread = new Thread(oddPrinter, "奇数打印线程");
         evenThread.start();
         oddThread.start();
+
 //        try {
 //            Thread.sleep(2000);
 //        } catch (InterruptedException e) {
