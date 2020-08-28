@@ -1,5 +1,5 @@
 package com.leetcode;
-
+import java.util.HashMap;
 public class Pack {
     public static void main(String[] args) {
         int[] w = {2, 1, 3, 2};
