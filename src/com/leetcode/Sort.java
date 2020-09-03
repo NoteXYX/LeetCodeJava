@@ -37,16 +37,19 @@ public class Sort {
 
     /***************************************插入排序******************************************
      * 平均时间复杂度O(n^2)    空间复杂度O(1)    稳定    最差时间复杂度O(n^2)    最好时间复杂度O(n)   */
-    public void charuSort(int[] nums) {
-        int n = nums.length;
-        for (int i = 1; i < n; i++) {
-            int k = i-1;
-            int tmp = nums[i];
-            while (k >=0 && nums[k] > tmp)
-                k--;
-            for (int j = i; j > k + 1; j--)
-                nums[j] = nums[j-1];
-            nums[k+1] = tmp;
+    public void charuSort(int[] array) {
+        if (array.length == 0)
+            return;
+        int current;
+        for (int i = 0; i < array.length - 1; i++) {
+            current = array[i + 1];
+            int preIndex = i;
+            while (preIndex >= 0 && current < array[preIndex])
+            {
+                array[preIndex + 1] = array[preIndex];
+                preIndex--;
+            }
+            array[preIndex + 1] = current;
         }
     }
     /***************************************插入排序******************************************/

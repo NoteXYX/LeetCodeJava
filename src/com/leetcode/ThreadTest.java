@@ -1,7 +1,6 @@
 package com.leetcode;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.*;
 
 public class ThreadTest {
      /////////////////生产者消费者模型////////////////////////////////////////////////////////
@@ -131,13 +130,73 @@ public class ThreadTest {
 //            new Thread(consumer, "线程"+i).start();
 //        }
 
-        Number number = new Number(0);
-        EvenPrinter evenPrinter = new EvenPrinter(number);
-        OddPrinter oddPrinter = new OddPrinter(number);
-        Thread evenThread = new Thread(evenPrinter, "偶数打印线程");
-        Thread oddThread = new Thread(oddPrinter, "奇数打印线程");
-        evenThread.start();
-        oddThread.start();
+//        Number number = new Number(0);
+//        EvenPrinter evenPrinter = new EvenPrinter(number);
+//        OddPrinter oddPrinter = new OddPrinter(number);
+//        Thread evenThread = new Thread(evenPrinter, "偶数打印线程");
+//        Thread oddThread = new Thread(oddPrinter, "奇数打印线程");
+//        evenThread.start();
+//        oddThread.start();
+
+
+
+//        //创建一个可缓存线程池
+//        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+//        for (int i = 0; i < 10; i++) {
+//            try {
+//                // sleep可明显看到使用的是线程池里面以前的线程，没有创建新的线程
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            cachedThreadPool.execute(new Runnable() {
+//                public void run() {
+//                    // 打印正在执行的缓存线程信息
+//                    System.out.println(Thread.currentThread().getName()
+//                            + "正在被执行");
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//        }
+
+//        //定长线程池
+//        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
+//        for (int i = 0; i < 10; i++) {
+//            fixedThreadPool.execute(new Runnable() {
+//                public void run() {
+//                    try {
+//                        // 打印正在执行的缓存线程信息
+//                        System.out.println(Thread.currentThread().getName()
+//                                + "正在被执行");
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//        }
+        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
+        //延迟1秒执行
+                 /*scheduledThreadPool.schedule(new Runnable() {
+                     public void run() {
+                        System.out.println("延迟1秒执行");
+                     }
+                 }, 1, TimeUnit.SECONDS);*/
+
+
+        //延迟1秒后每3秒执行一次
+        scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
+            public void run() {
+                System.out.println("延迟1秒后每3秒执行一次");
+            }
+        }, 1, 3, TimeUnit.SECONDS);
+
+
+
 
 //        try {
 //            Thread.sleep(2000);
