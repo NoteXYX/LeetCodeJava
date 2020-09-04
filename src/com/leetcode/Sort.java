@@ -192,12 +192,6 @@ public class Sort {
             heapify(nums, largest, heapSize);
         }
     }
-
-//    public void swap(int[] nums, int x, int y) {
-//        int tmp = nums[x];
-//        nums[x] = nums[y];
-//        nums[y] = tmp;
-//    }
     /********************************堆排序*******************************************/
 
     public static void main(String[] args) {
