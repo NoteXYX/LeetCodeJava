@@ -157,18 +157,17 @@ public class Sort {
     /***************************************希尔排序******************************************/
 
     /********************************堆排序*******************************************/
-    public int findKthLargest(int[] nums, int k) {
-        if (nums == null || nums.length < k) {
-            return 0;
+    public void duiSort(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return;
         }
         int heapSize = nums.length;
         buildHeap(nums, heapSize);
-        for (int i = nums.length-1; i > nums.length-k; i--) {
-            swap(nums, 0, i);
+        while (heapSize > 0) {
+            swap(nums, 0, heapSize - 1);
             heapSize--;
             heapify(nums, 0, heapSize);
         }
-        return nums[0];
     }
 
     public void buildHeap(int[] nums, int heapSize) {
@@ -217,5 +216,8 @@ public class Sort {
         nums = new int[]{5, 2, 6, 1, 7, 3, 2};
         s.shellSort(nums);
         System.out.println("希尔排序：" + Arrays.toString(nums));
+        nums = new int[]{5, 2, 6, 1, 7, 3, 2};
+        s.duiSort(nums);
+        System.out.println("堆排序：" + Arrays.toString(nums));
     }
 }
