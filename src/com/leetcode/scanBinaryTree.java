@@ -1,8 +1,6 @@
 //二叉树的遍历
 package com.leetcode;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.*;
 
 public class scanBinaryTree {
     private static class TreeNode {
@@ -113,6 +111,51 @@ public class scanBinaryTree {
         }
         return list;
     }
+    public static List<Integer> zuoShiTu(TreeNode root) {   //左视图
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<Integer> res = new ArrayList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            int curLevelSize = size;
+            while (size > 0) {
+                TreeNode node = queue.poll();
+                if (size == curLevelSize) {
+                    res.add(node.val);
+                }
+                if (node.left != null)
+                    queue.offer(node.left);
+                if (node.right != null)
+                    queue.offer(node.right);
+                size -= 1;
+            }
+        }
+        return res;
+    }
+    public static List<Integer> youShiTu(TreeNode root) {   //右视图
+        if (root == null)
+            return new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        List<Integer> res = new ArrayList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while (size > 0) {
+                TreeNode node = queue.poll();
+                if (node.left != null)
+                    queue.offer(node.left);
+                if (node.right != null)
+                    queue.offer(node.right);
+                size -= 1;
+                if (size == 0)
+                    res.add(node.val);
+            }
+        }
+        return res;
+    }
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -144,5 +187,7 @@ public class scanBinaryTree {
         post.postOrder(root);
         System.out.println("后序遍历非递归：" + post.list);
         System.out.println("层次遍历：" + cengci(root));
+        System.out.println("左视图：" + zuoShiTu(root));
+        System.out.println("右视图：" + youShiTu(root));
     }
 }
