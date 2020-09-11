@@ -9,19 +9,22 @@ package com.leetcode;
 public class Main5 {
     //dp[start][end] = dp[start+1][end-1] && s.charAt(start)==s.charAt(end)
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (s==null || len==0)
+        if(s == null || s.length() == 0)
             return s;
-        boolean dp[][] = new boolean[len][len];
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n];
         String res = "";
-        for (int l = 1; l <= len; l++) {
-            for (int start = 0; start < len; start++) {
-                int end = start + l - 1;
-                if (end >= len)
+        for(int len = 1; len <= n; len++) {
+            for(int start = 0; start < n; start++) {
+                int end = start + len - 1;
+                if(end >= n)
                     break;
-                dp[start][end] = l==1 || l==2 && s.charAt(start)==s.charAt(end) || dp[start+1][end-1] && s.charAt(start)==s.charAt(end);
-                if (dp[start][end] && end-start+1 > res.length())
-                    res = s.substring(start, end+1);
+                dp[start][end] = len == 1
+                        || len == 2 && s.charAt(start) == s.charAt(end)
+                        || dp[start+1][end-1] && s.charAt(start) == s.charAt(end);
+                if(dp[start][end] && len > res.length()) {
+                    res = s.substring(start, end + 1);
+                }
             }
         }
         return res;
