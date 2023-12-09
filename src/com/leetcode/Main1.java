@@ -31,20 +31,19 @@ public class Main1 {
         }
         return res;
     }
-    public int[] youhua(int[] nums, int target) {
+    public int[] youhuaTwoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            int complement = target - nums[i];
-            if (map.containsKey(complement)) {
-                return new int[] { map.get(complement), i };
+            if (map.containsKey(target - nums[i])) {
+                return new int[] {map.get(target - nums[i]), i};
             }
             map.put(nums[i], i);
         }
-        throw new IllegalArgumentException("NO two sum!");
+        return new int[0];
     }
     public static void main(String[] args) {
         Main1 m = new Main1();
         int[] nums = {2, 7, 11, 15};
-        System.out.println(Arrays.toString(m.twoSum(nums, 9)));
+        System.out.println(Arrays.toString(m.youhuaTwoSum(nums, 18)));
     }
 }
