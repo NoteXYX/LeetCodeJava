@@ -9,27 +9,28 @@ package com.leetcode;
  */
 public class Main11 {
     public int maxArea(int[] height) {
-        if (height==null || height.length<=1)
+        if (height == null || height.length <= 1) {
             return 0;
-        int max = 0;
-        int l = 0;
-        int r = height.length-1;
-        int curCap = 0;
-        while (l < r) {
-            curCap = (r-l) * Math.min(height[l], height[r]);
-            if (curCap > max)
-                max = curCap;
-            if (height[l] <= height[r])
-                l++;
-            else
-                r--;
         }
-        return max;
+        int left = 0;
+        int right = height.length - 1;
+        int maxMl = Math.min(height[left], height[right]) * (right - left);
+        while (left != right) {
+            if (height[left] <= height[right]) {
+                left += 1;
+            } else {
+                right -= 1;
+            }
+            if (left != right) {
+                maxMl = Math.max(maxMl, Math.min(height[left], height[right]) * (right - left));
+            }
+        }
+        return maxMl;
     }
 
     public static void main(String[] args) {
         Main11 m = new Main11();
-        int[] height = {1,8,6,2,5,4,8,3,7};
+        int[] height = {2,3,4,5,18,17,6};
         System.out.println(m.maxArea(height));
     }
 }

@@ -21,25 +21,26 @@ import java.util.Set;
  */
 public class Main128 {
     public int longestConsecutive(int[] nums) {
-        if (nums == null || nums.length == 0)
+        if (nums == null || nums.length == 0) {
             return 0;
-        Set<Integer> set = new HashSet<>();
-        for(int num: nums) {
-            set.add(num);
         }
-        int res = 0;
-        for (int num: set) {
-            if (!set.contains(num-1)) {
-                int curRes = 1;
+        Set<Integer> numSet = new HashSet<>();
+        for (int num: nums) {
+            numSet.add(num);
+        }
+        int longestLen = 1;
+        for (Integer num: numSet) {
+            if (!numSet.contains(num - 1)) {
+                int currentLen = 1;
                 int curNum = num;
-                while (set.contains(curNum+1)) {
-                    curRes += 1;
+                while (numSet.contains(curNum + 1)) {
+                    currentLen += 1;
                     curNum += 1;
                 }
-                res = Math.max(res, curRes);
+                longestLen = Math.max(longestLen, currentLen);
             }
         }
-        return res;
+        return longestLen;
     }
 
     public static void main(String[] args) {
