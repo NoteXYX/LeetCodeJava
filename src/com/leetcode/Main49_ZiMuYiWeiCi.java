@@ -10,7 +10,7 @@ import java.util.*;
  * 输入: strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
  * 输出: [["bat"],["nat","tan"],["ate","eat","tea"]]
  */
-public class Main49 {
+public class Main49_ZiMuYiWeiCi {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> word2List = new HashMap<>();
         for (int i = 0; i < strs.length; i++) {

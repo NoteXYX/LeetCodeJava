@@ -12,7 +12,7 @@ import java.util.List;
  * 注意：答案中不可以包含重复的三元组。
  * 双指针法
  */
-public class Main15 {
+public class Main15_ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length < 3) {
@@ -47,7 +47,7 @@ public class Main15 {
     }
 
     public static void main(String[] args) {
-        Main15 m = new Main15();
+        Main15_ThreeSum m = new Main15_ThreeSum();
         int[] nums = {-1, 0, 1, 2, -1, -4};
         System.out.println(m.threeSum(nums));
     }

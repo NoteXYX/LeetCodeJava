@@ -7,7 +7,7 @@ package com.leetcode;
  * 找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
  * 说明：你不能倾斜容器，且 n 的值至少为 2。
  */
-public class Main11 {
+public class Main11_ChengShuiZuiDuoDeRongQi {
     public int maxArea(int[] height) {
         if (height == null || height.length <= 1) {
             return 0;
@@ -29,7 +29,7 @@ public class Main11 {
     }
 
     public static void main(String[] args) {
-        Main11 m = new Main11();
+        Main11_ChengShuiZuiDuoDeRongQi m = new Main11_ChengShuiZuiDuoDeRongQi();
         int[] height = {2,3,4,5,18,17,6};
         System.out.println(m.maxArea(height));
     }

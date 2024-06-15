@@ -1,6 +1,5 @@
 package com.leetcode;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -19,7 +18,7 @@ import java.util.Set;
  * 解释: 最长连续序列是 [1, 2, 3, 4]。它的长度为 4。
  *
  */
-public class Main128 {
+public class Main128_ZuiChangLianXuXuLie {
     public int longestConsecutive(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
@@ -44,7 +43,7 @@ public class Main128 {
     }
 
     public static void main(String[] args) {
-        Main128 m = new Main128();
+        Main128_ZuiChangLianXuXuLie m = new Main128_ZuiChangLianXuXuLie();
         Scanner sc = new Scanner(System.in);
         while (sc.hasNextLine()) {
             String line = sc.nextLine();

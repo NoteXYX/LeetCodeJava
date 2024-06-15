@@ -12,7 +12,7 @@ import java.util.HashMap;
  * 因为 nums[0] + nums[1] = 2 + 7 = 9
  * 所以返回 [0, 1]
  */
-public class Main1 {
+public class Main1_TwoSum {
     public int[] twoSum(int[] nums, int target) {
         if (nums==null || nums.length==0) {
             return new int[0];
@@ -42,7 +42,7 @@ public class Main1 {
         return new int[0];
     }
     public static void main(String[] args) {
-        Main1 m = new Main1();
+        Main1_TwoSum m = new Main1_TwoSum();
         int[] nums = {2, 7, 11, 15};
         System.out.println(Arrays.toString(m.youhuaTwoSum(nums, 18)));
     }

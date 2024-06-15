@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * 42. 接雨水
  */
-public class Main42 {
+public class Main42_JieYuShui {
     public int trapDandiaoZhan(int[] height) {
         int sum = 0;
         Stack<Integer> stack = new Stack<>();
@@ -52,7 +52,7 @@ public class Main42 {
 
     public static void main(String[] args) {
         int[] req = {4,2,0,3,2,5};
-        Main42 main42 = new Main42();
+        Main42_JieYuShui main42 = new Main42_JieYuShui();
         System.out.println(main42.trapDoubleCurser(req));
     }
 }

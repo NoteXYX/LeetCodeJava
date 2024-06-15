@@ -15,7 +15,7 @@ import java.util.Arrays;
  * 输入: nums = [0]
  * 输出: [0]
  */
-public class Main283 {
+public class Main283_YiDongLing {
     public void moveZeroes(int[] nums) {
         int first = 0;
         int second = 0;
@@ -35,7 +35,7 @@ public class Main283 {
     }
 
     public static void main(String[] args) {
-        Main283 main283 = new Main283();
+        Main283_YiDongLing main283 = new Main283_YiDongLing();
         int[] nums = {0};
         main283.moveZeroes(nums);
         System.out.println(Arrays.toString(nums));
