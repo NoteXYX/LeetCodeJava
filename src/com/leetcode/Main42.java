@@ -6,7 +6,7 @@ import java.util.Stack;
  * 42. 接雨水
  */
 public class Main42 {
-    public int trap(int[] height) {
+    public int trapDandiaoZhan(int[] height) {
         int sum = 0;
         Stack<Integer> stack = new Stack<>();
         int current = 0;
@@ -26,5 +26,33 @@ public class Main42 {
             current++; //指针后移
         }
         return sum;
+    }
+
+    public int trapDoubleCurser(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int res = 0;
+        int leftMax = 0;
+        int rightMax = 0;
+        while (left != right) {
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
+            if (leftMax < rightMax) {
+                // 可以放心计算左指针所在柱子的雨水量
+                res += leftMax - height[left];
+                left += 1;
+            } else {
+                // 可以放心计算右指针所在柱子的雨水量
+                res += rightMax - height[right];
+                right -= 1;
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        int[] req = {4,2,0,3,2,5};
+        Main42 main42 = new Main42();
+        System.out.println(main42.trapDoubleCurser(req));
     }
 }
