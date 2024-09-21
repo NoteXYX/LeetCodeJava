@@ -12,7 +12,7 @@ import java.util.PriorityQueue;
  * 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4
  * 输出: 4
  */
-public class Main215 {
+public class Main215_TopK {
     public int findKthLargest0(int[] nums, int k) {
         PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
             @Override
@@ -78,7 +78,7 @@ public class Main215 {
     public static void main(String[] args) {
         int[] nums = {3,2,1,5,6,4};
         int k = 2;
-        Main215 m = new Main215();
+        Main215_TopK m = new Main215_TopK();
         System.out.println(m.findKthLargest(nums, k));
     }
 }
